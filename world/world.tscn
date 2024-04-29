@@ -1,3 +1,95 @@
-[gd_scene format=3 uid="uid://c82ssjjlw1cm7"]
+[gd_scene load_steps=6 format=3 uid="uid://c82ssjjlw1cm7"]
+
+[ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_xc6d5"]
+[ext_resource type="PackedScene" uid="uid://cd7yfc7x0f7gl" path="res://player/player.tscn" id="2_2ox7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk10e"]
+size = Vector2(360, 51)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_di55o"]
+texture = ExtResource("1_xc6d5")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kyi77"]
+resource_local_to_scene = true
+sources/0 = SubResource("TileSetAtlasSource_di55o")
 
 [node name="World" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("2_2ox7e")]
+position = Vector2(167, 97)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(168, 162.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_uk10e")
+
+[node name="TileMap" type="TileMap" parent="."]
+visible = false
+tile_set = SubResource("TileSet_kyi77")
+format = 2
+layer_0/tile_data = PackedInt32Array(589826, 196608, 4, 589827, 196608, 4, 589828, 196608, 4, 589829, 196608, 4, 589832, 196608, 4, 589831, 196608, 4, 589830, 196608, 4, 589833, 196608, 4, 589834, 196608, 4, 589835, 196608, 4, 589836, 196608, 4, 589837, 196608, 4, 589838, 196608, 4, 589839, 196608, 4, 589840, 196608, 4, 589841, 196608, 4, 589842, 196608, 4, 589843, 196608, 4, 589844, 196608, 4, 589825, 196608, 4, 589824, 196608, 4, 655359, 196608, 4)
