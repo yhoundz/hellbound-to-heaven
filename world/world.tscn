@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://c82ssjjlw1cm7"]
+[gd_scene load_steps=10 format=3 uid="uid://c82ssjjlw1cm7"]
 
 [ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_xc6d5"]
 [ext_resource type="PackedScene" uid="uid://cd7yfc7x0f7gl" path="res://player/player.tscn" id="2_2ox7e"]
+[ext_resource type="PackedScene" uid="uid://b4uc20csepgo7" path="res://world/mehanics/portal.tscn" id="3_nri13"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2gny0"]
+size = Vector2(68.5, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imrym"]
+size = Vector2(20, 122.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk10e"]
 size = Vector2(360, 51)
@@ -77,10 +84,25 @@ texture = ExtResource("1_xc6d5")
 resource_local_to_scene = true
 sources/0 = SubResource("TileSetAtlasSource_di55o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06vdt"]
+size = Vector2(51.7193, 54.5477)
+
 [node name="World" type="Node2D"]
 
 [node name="player" parent="." instance=ExtResource("2_2ox7e")]
 position = Vector2(167, 97)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(77, 60)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_2gny0")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(-3, 65)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_imrym")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(168, 162.5)
@@ -93,3 +115,22 @@ visible = false
 tile_set = SubResource("TileSet_kyi77")
 format = 2
 layer_0/tile_data = PackedInt32Array(589826, 196608, 4, 589827, 196608, 4, 589828, 196608, 4, 589829, 196608, 4, 589832, 196608, 4, 589831, 196608, 4, 589830, 196608, 4, 589833, 196608, 4, 589834, 196608, 4, 589835, 196608, 4, 589836, 196608, 4, 589837, 196608, 4, 589838, 196608, 4, 589839, 196608, 4, 589840, 196608, 4, 589841, 196608, 4, 589842, 196608, 4, 589843, 196608, 4, 589844, 196608, 4, 589825, 196608, 4, 589824, 196608, 4, 655359, 196608, 4)
+
+[node name="slope" type="StaticBody2D" parent="."]
+position = Vector2(267, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slope"]
+rotation = 0.785398
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_06vdt")
+
+[node name="portal" parent="." instance=ExtResource("3_nri13")]
+position = Vector2(190, 45)
+
+[node name="entrance" parent="portal" index="0"]
+position = Vector2(-12, -23)
+
+[node name="exit" parent="portal" index="1"]
+position = Vector2(42, -9)
+
+[editable path="portal"]
