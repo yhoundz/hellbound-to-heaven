@@ -121,7 +121,6 @@ position = Vector2(267, 90)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slope"]
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_06vdt")
 
 [node name="portal" parent="." instance=ExtResource("3_nri13")]

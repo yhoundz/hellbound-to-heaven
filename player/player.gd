@@ -13,8 +13,8 @@ enum STATE {
 
 @export var speed: int = 45
 @export var jump_speed: int = -200
-@export var acceleration: int = 12
-@export var friction: int = 24
+@export var acceleration: int = 30
+@export var friction: int = 40
 @export var curr_state: STATE = STATE.IDLE
 
 @onready var jump_timer: Timer = $jump_timer
@@ -102,17 +102,19 @@ func act_jump(delta: float) -> void:
 	else:
 		if is_on_wall_only():
 			var bounce_velocity: int = -real_x_velocity
-			bounce_velocity *= (get_real_velocity().y/(jump_speed - height_add))
+			bounce_velocity *= 0.5 * (get_real_velocity().y/(jump_speed - height_add))
 			velocity.x = bounce_velocity
 			curr_state = STATE.WALL_BOUNCE
 
 func act_fall() -> void:
 	just_jumped = false
 	if is_on_floor():
+		velocity.x = 0
 		curr_state = STATE.IDLE
 
 func act_wall_bounce() -> void:
 	if is_on_floor():
+		velocity.x = 0
 		curr_state = STATE.IDLE
 	if velocity.y > 0:
 		curr_state = STATE.FALLING
