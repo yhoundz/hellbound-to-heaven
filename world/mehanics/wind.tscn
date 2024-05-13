@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnb1liomhtjjp"]
+
+[ext_resource type="Script" path="res://world/mehanics/wind.gd" id="1_0pi4i"]
+[ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_g25l6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vwa7"]
+size = Vector2(291, 189)
+
+[node name="wind" type="Area2D"]
+script = ExtResource("1_0pi4i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(82.5, 30.5)
+shape = SubResource("RectangleShape2D_7vwa7")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.305882)
+position = Vector2(81.5, 30.5)
+scale = Vector2(2.27344, 1.47656)
+texture = ExtResource("1_g25l6")
+
+[node name="transition_timer" type="Timer" parent="."]
+
+[node name="duration_timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_wind_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_wind_body_exited"]

@@ -7,12 +7,11 @@ enum STATE {
 	CHARGING,
 	JUMPING,
 	FALLING,
-	WALL_BOUNCE,
-	SLIDING
+	WALL_BOUNCE
 	}
 
-@export var speed: int = 45
-@export var jump_speed: int = -200
+@export var speed: int = 55
+@export var jump_speed: int = -140
 @export var acceleration: int = 30
 @export var friction: int = 40
 @export var curr_state: STATE = STATE.IDLE
@@ -23,15 +22,14 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var fall_gravity: int = int(gravity * 1.3)
 var direction: float = 0.0
 var just_jumped: bool = false
-var real_x_velocity: int = 0
 var height_add: int = 0
+var jump_vector_x: int = 0
+var velocity_modifier: int = 0
 
 func _ready() -> void:
 	jump_timer.start()
 	jump_timer.set_paused(true)
-	set_floor_max_angle(0.6981317)
 	set_slide_on_ceiling_enabled(false)
-	
 
 func _physics_process(delta: float) -> void:
 	if curr_state != STATE.FALLING:
@@ -40,10 +38,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y += fall_gravity * delta
 	get_input(delta)
 	move_and_slide()
+	#print(get_real_velocity().x)
 
 func get_input(delta: float) -> void:
 	direction = Input.get_axis("ui_left", "ui_right")
 	#print(STATE.keys()[curr_state])
+	compute_slide()
 	match curr_state:
 		STATE.IDLE:
 			act_idle(delta)
@@ -57,8 +57,14 @@ func get_input(delta: float) -> void:
 			act_fall()
 		STATE.WALL_BOUNCE:
 			act_wall_bounce()
-		STATE.SLIDING:
-			act_slide()
+
+func compute_slide() -> bool:
+	if get_slide_collision_count() > 0 and rad_to_deg(get_floor_angle()) > 40:
+		set_floor_max_angle(deg_to_rad(40))
+		return true
+	else:
+		set_floor_max_angle(deg_to_rad(45))
+		return false
 
 func act_idle(delta: float) -> void:
 	if is_on_floor():
@@ -66,7 +72,7 @@ func act_idle(delta: float) -> void:
 		if direction:
 			curr_state = STATE.WALKING
 		else:
-			velocity.x = lerp(velocity.x, 0.0, friction * delta)
+			velocity.x = lerp(velocity.x, float(), friction * delta)
 		if Input.is_action_just_pressed("ui_accept"):
 				curr_state = STATE.CHARGING
 	if velocity.y > 0:
@@ -101,26 +107,28 @@ func act_jump(delta: float) -> void:
 		curr_state = STATE.FALLING
 	else:
 		if is_on_wall_only():
-			var bounce_velocity: int = -real_x_velocity
-			bounce_velocity *= 0.5 * (get_real_velocity().y/(jump_speed - height_add))
+			var bounce_velocity: int = -jump_vector_x
+			bounce_velocity *= 0.4 * (get_real_velocity().y/(jump_speed - height_add))
 			velocity.x = bounce_velocity
 			curr_state = STATE.WALL_BOUNCE
 
 func act_fall() -> void:
 	just_jumped = false
 	if is_on_floor():
-		velocity.x = 0
 		curr_state = STATE.IDLE
+	else:
+		if is_on_wall_only():
+			var bounce_velocity: int = -jump_vector_x
+			bounce_velocity *= 0.4 * (get_real_velocity().y/(jump_speed - height_add))
+			velocity.x = bounce_velocity
+			curr_state = STATE.WALL_BOUNCE
 
-func act_wall_bounce() -> void:
+func act_wall_bounce():
 	if is_on_floor():
 		velocity.x = 0
 		curr_state = STATE.IDLE
 	if velocity.y > 0:
 		curr_state = STATE.FALLING
-
-func act_slide() -> void:
-	pass
 
 func charge_jump() -> void:
 	if jump_timer.is_paused():
@@ -130,10 +138,10 @@ func charge_jump() -> void:
 func try_jump(direction: float, delta: float) -> void:
 	jump_timer.set_paused(true)
 	
-	real_x_velocity = int(180 * direction)
-	height_add = int(280 * (jump_timer.wait_time - jump_timer.time_left))
+	jump_vector_x = int(150 * direction)
+	height_add = int(340 * (jump_timer.wait_time - jump_timer.time_left))
 	velocity.y = jump_speed - height_add
-	velocity.x = real_x_velocity
+	velocity.x = jump_vector_x
 
 func _on_jump_timer_timeout() -> void:
 	if curr_state == STATE.CHARGING:
