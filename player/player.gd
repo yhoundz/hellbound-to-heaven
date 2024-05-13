@@ -119,7 +119,7 @@ func act_fall() -> void:
 	else:
 		if is_on_wall_only():
 			var bounce_velocity: int = -jump_vector_x
-			bounce_velocity *= 0.4 * (get_real_velocity().y/(jump_speed - height_add))
+			bounce_velocity *= 0.4 * (-get_real_velocity().y/(jump_speed - height_add))
 			velocity.x = bounce_velocity
 			curr_state = STATE.WALL_BOUNCE
 
