@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhppxyw1s8ckr"
+path="res://.godot/imported/544695__badoink__wharp.wav-9bf105b433b56ce283cdcfca4820ada3.sample"
+
+[deps]
+
+source_file="res://assets/Audio Files - Copy/Movement/Abilites/544695__badoink__wharp.wav"
+dest_files=["res://.godot/imported/544695__badoink__wharp.wav-9bf105b433b56ce283cdcfca4820ada3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

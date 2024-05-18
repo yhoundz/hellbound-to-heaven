@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ck0uu81l5oli5"
+path="res://.godot/imported/205817__yuval__footsteps-pavement-street.wav-75c6fc71274b1b990591c6912cb93f3c.sample"
+
+[deps]
+
+source_file="res://assets/Audio Files - Copy/Movement/Walk/205817__yuval__footsteps-pavement-street.wav"
+dest_files=["res://.godot/imported/205817__yuval__footsteps-pavement-street.wav-75c6fc71274b1b990591c6912cb93f3c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

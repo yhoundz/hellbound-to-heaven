@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bo21cjotw1xgu"
+path="res://.godot/imported/590455__mrfossy__sfx_stickerripper_slayer_22.wav-9b75fcfcab51c9758a7b4cd4aa1efb70.sample"
+
+[deps]
+
+source_file="res://assets/Audio Files - Copy/Movement/Abilites/590455__mrfossy__sfx_stickerripper_slayer_22.wav"
+dest_files=["res://.godot/imported/590455__mrfossy__sfx_stickerripper_slayer_22.wav-9b75fcfcab51c9758a7b4cd4aa1efb70.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

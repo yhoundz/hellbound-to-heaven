@@ -1,17 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://c82ssjjlw1cm7"]
+[gd_scene load_steps=14 format=3 uid="uid://c82ssjjlw1cm7"]
 
+[ext_resource type="Texture2D" uid="uid://blgjwfcn1rrcp" path="res://assets/Sky2.png" id="1_aafo5"]
 [ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_xc6d5"]
 [ext_resource type="PackedScene" uid="uid://cd7yfc7x0f7gl" path="res://player/player.tscn" id="2_2ox7e"]
 [ext_resource type="PackedScene" uid="uid://b4uc20csepgo7" path="res://world/mehanics/portal.tscn" id="3_nri13"]
+[ext_resource type="Texture2D" uid="uid://bl4m3lcxxpl6j" path="res://assets/greek structure/dante/column 2.png" id="5_synvp"]
+[ext_resource type="Texture2D" uid="uid://bpxtdlexgujeu" path="res://assets/greek structure/column 3-1.png.png" id="6_iuo2t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2gny0"]
-size = Vector2(68.5, 26)
+size = Vector2(42.25, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imrym"]
-size = Vector2(20, 122.5)
+size = Vector2(20, 280.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk10e"]
-size = Vector2(360, 51)
+size = Vector2(403, 51)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_di55o"]
 texture = ExtResource("1_xc6d5")
@@ -85,30 +88,48 @@ resource_local_to_scene = true
 sources/0 = SubResource("TileSetAtlasSource_di55o")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06vdt"]
-size = Vector2(51.7193, 54.5477)
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc1q7"]
+size = Vector2(32, 66)
 
 [node name="World" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(201, 128)
+scale = Vector2(1.995, 2.00781)
+texture = ExtResource("1_aafo5")
+
 [node name="player" parent="." instance=ExtResource("2_2ox7e")]
-position = Vector2(167, 97)
+position = Vector2(120, 93)
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(77, 60)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(-15, -9)
 shape = SubResource("RectangleShape2D_2gny0")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
 position = Vector2(-3, 65)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(0, 68.875)
+shape = SubResource("RectangleShape2D_imrym")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(402, 65)
 shape = SubResource("RectangleShape2D_imrym")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(168, 162.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(30.5, 90.5)
 shape = SubResource("RectangleShape2D_uk10e")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -117,19 +138,58 @@ format = 2
 layer_0/tile_data = PackedInt32Array(589826, 196608, 4, 589827, 196608, 4, 589828, 196608, 4, 589829, 196608, 4, 589832, 196608, 4, 589831, 196608, 4, 589830, 196608, 4, 589833, 196608, 4, 589834, 196608, 4, 589835, 196608, 4, 589836, 196608, 4, 589837, 196608, 4, 589838, 196608, 4, 589839, 196608, 4, 589840, 196608, 4, 589841, 196608, 4, 589842, 196608, 4, 589843, 196608, 4, 589844, 196608, 4, 589825, 196608, 4, 589824, 196608, 4, 655359, 196608, 4)
 
 [node name="slope" type="StaticBody2D" parent="."]
-position = Vector2(267, 90)
+position = Vector2(184, 74)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slope"]
-rotation = 0.785398
+position = Vector2(21.6966, 6.01797)
+rotation = 0.754566
 shape = SubResource("RectangleShape2D_06vdt")
 
 [node name="portal" parent="." instance=ExtResource("3_nri13")]
-position = Vector2(190, 45)
+position = Vector2(120, 37)
 
 [node name="entrance" parent="portal" index="0"]
-position = Vector2(-12, -23)
+position = Vector2(8, -19)
 
 [node name="exit" parent="portal" index="1"]
 position = Vector2(42, -9)
+
+[node name="column" type="StaticBody2D" parent="."]
+position = Vector2(58, -29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="column"]
+visible = false
+position = Vector2(163, 222)
+shape = SubResource("RectangleShape2D_nc1q7")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="column"]
+position = Vector2(164, 222.25)
+scale = Vector2(0.68, 0.456667)
+texture = ExtResource("5_synvp")
+
+[node name="column2" type="StaticBody2D" parent="."]
+position = Vector2(58, -29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="column2"]
+visible = false
+position = Vector2(16, 224)
+shape = SubResource("RectangleShape2D_nc1q7")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="column2"]
+position = Vector2(16, 224)
+scale = Vector2(0.68, 0.456667)
+texture = ExtResource("5_synvp")
+
+[node name="cloud 1" type="StaticBody2D" parent="."]
+position = Vector2(187, 54)
+
+[node name="Sprite2D" type="Sprite2D" parent="cloud 1"]
+position = Vector2(10, 6.25)
+scale = Vector2(0.101763, 0.109903)
+texture = ExtResource("6_iuo2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cloud 1"]
 
 [editable path="portal"]

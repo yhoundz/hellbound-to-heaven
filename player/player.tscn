@@ -20,6 +20,7 @@ shape = SubResource("RectangleShape2D_raclb")
 one_shot = true
 
 [node name="player_camera" type="Camera2D" parent="."]
+visible = false
 enabled = false
 
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
