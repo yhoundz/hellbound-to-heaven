@@ -26,14 +26,19 @@ var height_add: int = 0
 var jump_vector_x: int = 0
 var velocity_modifier: int = 0
 
+signal hitboxDirection(rp)
+
 func _ready() -> void:
 	jump_timer.start()
 	jump_timer.set_paused(true)
 	set_slide_on_ceiling_enabled(false)
+	
 
 func _physics_process(delta: float) -> void:
+	
 	if curr_state != STATE.FALLING:
 		velocity.y += gravity * delta
+		
 	else:
 		velocity.y += fall_gravity * delta
 	get_input(delta)
@@ -42,21 +47,33 @@ func _physics_process(delta: float) -> void:
 
 func get_input(delta: float) -> void:
 	direction = Input.get_axis("ui_left", "ui_right")
+	#print(direction)
+	if direction == -1:
+		get_node("AnimatedSprite2D").flip_h = true
+		
+	if direction == 1:
+		get_node("AnimatedSprite2D").flip_h = false
 	#print(STATE.keys()[curr_state])
 	compute_slide()
 	match curr_state:
 		STATE.IDLE:
 			act_idle(delta)
+			get_node("AnimatedSprite2D").play("idle")
 		STATE.WALKING:
 			act_walk(delta)
+			get_node("AnimatedSprite2D").play("run")
 		STATE.CHARGING:
 			act_charge()
+			get_node("AnimatedSprite2D").play("hold")
 		STATE.JUMPING:
 			act_jump(delta)
+			get_node("AnimatedSprite2D").play("jump")
 		STATE.FALLING:
 			act_fall()
+			get_node("AnimatedSprite2D").play("falling")
 		STATE.WALL_BOUNCE:
 			act_wall_bounce()
+			get_node("AnimatedSprite2D").play("falling")
 
 func compute_slide() -> bool:
 	if get_slide_collision_count() > 0 and rad_to_deg(get_floor_angle()) > 40:
@@ -69,6 +86,10 @@ func compute_slide() -> bool:
 func act_idle(delta: float) -> void:
 	if is_on_floor():
 		velocity.y = 0
+		if direction == -1:
+			get_node("AnimatedSprite2D").flip_h = true
+		if direction == 1:
+			get_node("AnimatedSprite2D").flip_h = false
 		if direction:
 			curr_state = STATE.WALKING
 		else:
@@ -81,6 +102,10 @@ func act_idle(delta: float) -> void:
 func act_walk(delta: float) -> void:
 	if is_on_floor():
 		velocity.y = 0
+		if direction == -1:
+			get_node("AnimatedSprite2D").flip_h = true
+		if direction == 1:
+			get_node("AnimatedSprite2D").flip_h = false
 		if direction:
 			velocity.x = lerp(velocity.x, direction * speed, acceleration * delta)
 		else:
@@ -146,3 +171,7 @@ func try_jump(direction: float, delta: float) -> void:
 func _on_jump_timer_timeout() -> void:
 	if curr_state == STATE.CHARGING:
 		curr_state = STATE.JUMPING
+
+
+func _on_entrance_body_entered(body):
+	pass # Replace with function body.
