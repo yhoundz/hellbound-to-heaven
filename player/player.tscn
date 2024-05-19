@@ -203,7 +203,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_raclb"]
-size = Vector2(14, 33)
+size = Vector2(11, 24)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_475p5")
@@ -216,14 +216,14 @@ visible = false
 enabled = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-7, 0)
-scale = Vector2(1.05327, 1.03906)
+position = Vector2(-5, -1.77636e-15)
+scale = Vector2(0.7, 0.78125)
 sprite_frames = SubResource("SpriteFrames_yscuv")
-animation = &"run"
-frame_progress = 0.685889
+animation = &"idle"
 offset = Vector2(6.7068, -7.17005e-08)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_raclb")
 
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]
