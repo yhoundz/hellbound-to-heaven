@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bykuy010f6jxu"]
+[gd_scene load_steps=5 format=3 uid="uid://dqupmtnhdtclq"]
 
-[ext_resource type="Texture2D" uid="uid://dcpmtdd2mn6dt" path="res://Designer (1).png" id="1_hw2tx"]
+[ext_resource type="Texture2D" uid="uid://bf51f5ff81ob7" path="res://Designer (1).png" id="1_hw2tx"]
 [ext_resource type="Script" path="res://start_screen.gd" id="1_l2yfq"]
 
 [sub_resource type="SystemFont" id="SystemFont_imte3"]

@@ -1469,15 +1469,6 @@ position = Vector2(50, 56)
 [node name="exit" parent="portal2" index="1"]
 position = Vector2(-133, -17)
 
-[node name="portal3" parent="." instance=ExtResource("3_nri13")]
-position = Vector2(30, 88)
-
-[node name="entrance" parent="portal3" index="0"]
-position = Vector2(-21, -33)
-
-[node name="exit" parent="portal3" index="1"]
-position = Vector2(70, -62)
-
 [node name="cutscene_trigger" type="Area2D" parent="."]
 position = Vector2(124, -754)
 
@@ -1492,4 +1483,3 @@ position = Vector2(383, -166)
 
 [editable path="portal"]
 [editable path="portal2"]
-[editable path="portal3"]
