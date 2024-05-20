@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4uc20csepgo7"]
+[gd_scene load_steps=5 format=3 uid="uid://b4uc20csepgo7"]
 
-[ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_8lryt"]
 [ext_resource type="Script" path="res://world/mehanics/portal.gd" id="1_wgnww"]
+[ext_resource type="Texture2D" uid="uid://cosfkp45iw43a" path="res://assets/Dimensional_Portal_blue.png" id="2_vlh3n"]
+[ext_resource type="Texture2D" uid="uid://xyja8ddrst81" path="res://assets/Dimensional_Portal_orange.png" id="3_7yfki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8krri"]
-size = Vector2(12, 16)
+size = Vector2(8, 16)
 
 [node name="portal" type="Node2D"]
 script = ExtResource("1_wgnww")
@@ -12,10 +13,11 @@ script = ExtResource("1_wgnww")
 [node name="entrance" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="entrance"]
-modulate = Color(0, 0.360784, 0.694118, 1)
 position = Vector2(0, -2.98023e-07)
-scale = Vector2(0.09375, 0.125)
-texture = ExtResource("1_8lryt")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vlh3n")
+region_enabled = true
+region_rect = Rect2(0, 0, 34, 32)
 
 [node name="collision" type="CollisionShape2D" parent="entrance"]
 shape = SubResource("RectangleShape2D_8krri")
@@ -23,10 +25,11 @@ shape = SubResource("RectangleShape2D_8krri")
 [node name="exit" type="Area2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="exit"]
-modulate = Color(1, 0.32549, 0.121569, 1)
 position = Vector2(0, -2.98023e-07)
-scale = Vector2(0.09375, 0.125)
-texture = ExtResource("1_8lryt")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_7yfki")
+region_enabled = true
+region_rect = Rect2(0, 0, 34, 32)
 
 [node name="collision" type="CollisionShape2D" parent="exit"]
 shape = SubResource("RectangleShape2D_8krri")

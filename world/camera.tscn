@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://world/camera.gd" id="1_p6wv0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axucb"]
-size = Vector2(200, 1)
+size = Vector2(200, 110)
 
 [node name="camera" type="Camera2D"]
 position = Vector2(100, 70)
@@ -13,14 +13,14 @@ script = ExtResource("1_p6wv0")
 position = Vector2(-1, -82)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="top_area"]
-position = Vector2(1, 10.5)
+position = Vector2(1, -44)
 shape = SubResource("RectangleShape2D_axucb")
 
 [node name="bottom_area" type="Area2D" parent="."]
 position = Vector2(-1, -82)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottom_area"]
-position = Vector2(1, 156)
+position = Vector2(1, 212)
 shape = SubResource("RectangleShape2D_axucb")
 
 [connection signal="body_entered" from="top_area" to="." method="_on_top_area_body_entered"]

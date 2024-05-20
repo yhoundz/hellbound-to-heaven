@@ -1378,10 +1378,9 @@ size = Vector2(42.25, 11)
 size = Vector2(20, 122.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk10e"]
-size = Vector2(90, 304.5)
+size = Vector2(360, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80gpj"]
-size = Vector2(115, 223)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_q8bq3")
@@ -1436,14 +1435,7 @@ shape = SubResource("RectangleShape2D_imrym")
 position = Vector2(168, 162.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-213, -1061.25)
-shape = SubResource("RectangleShape2D_uk10e")
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(168, 162.5)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2(77, -1061.5)
+position = Vector2(63, 36.5)
 shape = SubResource("RectangleShape2D_uk10e")
 
 [node name="music_player" type="AudioStreamPlayer" parent="."]
@@ -1479,10 +1471,9 @@ position = Vector2(-21, -33)
 position = Vector2(70, -62)
 
 [node name="cutscene_trigger" type="Area2D" parent="."]
-position = Vector2(124, -754)
+position = Vector2(48, 99)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cutscene_trigger"]
-position = Vector2(15, -78)
 shape = SubResource("RectangleShape2D_80gpj")
 
 [node name="end_cutscene" parent="." instance=ExtResource("8_huaec")]
