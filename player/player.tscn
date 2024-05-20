@@ -1,10 +1,14 @@
-[gd_scene load_steps=32 format=3 uid="uid://cd7yfc7x0f7gl"]
+[gd_scene load_steps=36 format=3 uid="uid://cd7yfc7x0f7gl"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_475p5"]
 [ext_resource type="Texture2D" uid="uid://cqwx5vys0qm5o" path="res://assets/dante/jump.png" id="2_qw6to"]
 [ext_resource type="Texture2D" uid="uid://cmvlx5mnd81uh" path="res://assets/dante/hold.png" id="3_q6icw"]
 [ext_resource type="Texture2D" uid="uid://dtf05aoxkmux6" path="res://assets/dante/idle.png" id="4_atb5l"]
 [ext_resource type="Texture2D" uid="uid://dlatua1gqed3u" path="res://assets/dante/run.png" id="5_qjg0q"]
+[ext_resource type="AudioStream" uid="uid://bts7cov15582a" path="res://assets/audio/Movement/Jump/127197__davedes__fast-simple-chop-5.wav" id="6_othye"]
+[ext_resource type="AudioStream" uid="uid://c45m8isl452hq" path="res://assets/audio/Movement/walk/Ejimas1.ogg" id="7_oo1b3"]
+[ext_resource type="AudioStream" uid="uid://bo21cjotw1xgu" path="res://assets/audio/Movement/Abilites/590455__mrfossy__sfx_stickerripper_slayer_22.wav" id="8_jf7x2"]
+[ext_resource type="AudioStream" uid="uid://dhppxyw1s8ckr" path="res://assets/audio/Movement/Abilites/544695__badoink__wharp.wav" id="9_7bnmv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5rfn"]
 atlas = ExtResource("2_qw6to")
@@ -224,5 +228,18 @@ offset = Vector2(6.7068, -7.17005e-08)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_raclb")
+
+[node name="sfx_jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_othye")
+
+[node name="sfx_walk" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_oo1b3")
+volume_db = 12.0
+
+[node name="sfx_land_bounce" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_jf7x2")
+
+[node name="sfx_charge" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_7bnmv")
 
 [connection signal="timeout" from="jump_timer" to="." method="_on_jump_timer_timeout"]

@@ -1,10 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://c82ssjjlw1cm7"]
+[gd_scene load_steps=11 format=3 uid="uid://c82ssjjlw1cm7"]
 
 [ext_resource type="Texture2D" uid="uid://blgjwfcn1rrcp" path="res://assets/Sky2.png" id="1_aafo5"]
-[ext_resource type="Texture2D" uid="uid://pvkl2bvcinw3" path="res://icon.svg" id="1_xc6d5"]
 [ext_resource type="PackedScene" uid="uid://cd7yfc7x0f7gl" path="res://player/player.tscn" id="2_2ox7e"]
 [ext_resource type="Texture2D" uid="uid://1f1yw20ih61o" path="res://assets/game_assets.png" id="2_er6hu"]
 [ext_resource type="PackedScene" uid="uid://b4uc20csepgo7" path="res://world/mehanics/portal.tscn" id="3_nri13"]
+[ext_resource type="AudioStream" uid="uid://rma2kotneoij" path="res://assets/audio/Levels/Heaven/511195__theojt__gates-of-heaven-music.mp3" id="5_own8s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyu6i"]
 texture = ExtResource("2_er6hu")
@@ -1377,83 +1377,6 @@ size = Vector2(20, 122.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk10e"]
 size = Vector2(360, 51)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_di55o"]
-texture = ExtResource("1_xc6d5")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-7:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-7:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-4:7/0 = 0
-5:7/0 = 0
-6:7/0 = 0
-7:7/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_kyi77"]
-resource_local_to_scene = true
-sources/0 = SubResource("TileSetAtlasSource_di55o")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_06vdt"]
-size = Vector2(51.7193, 54.5477)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8krri"]
-size = Vector2(10.5, 16)
-
 [node name="World" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -1505,56 +1428,6 @@ position = Vector2(168, 162.5)
 position = Vector2(63, 36.5)
 shape = SubResource("RectangleShape2D_uk10e")
 
-[node name="TileMap" type="TileMap" parent="."]
-visible = false
-tile_set = SubResource("TileSet_kyi77")
-format = 2
-layer_0/tile_data = PackedInt32Array(589826, 196608, 4, 589827, 196608, 4, 589828, 196608, 4, 589829, 196608, 4, 589832, 196608, 4, 589831, 196608, 4, 589830, 196608, 4, 589833, 196608, 4, 589834, 196608, 4, 589835, 196608, 4, 589836, 196608, 4, 589837, 196608, 4, 589838, 196608, 4, 589839, 196608, 4, 589840, 196608, 4, 589841, 196608, 4, 589842, 196608, 4, 589843, 196608, 4, 589844, 196608, 4, 589825, 196608, 4, 589824, 196608, 4, 655359, 196608, 4)
-
-[node name="slope" type="StaticBody2D" parent="."]
-position = Vector2(184, 74)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slope"]
-position = Vector2(120, 0)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_06vdt")
-
-[node name="portal2" parent="slope" instance=ExtResource("3_nri13")]
-position = Vector2(-64, -37)
-
-[node name="entrance" parent="slope/portal2" index="0"]
-position = Vector2(10, 20)
-
-[node name="Sprite2D" parent="slope/portal2/entrance" index="0"]
-visible = false
-position = Vector2(54, -422)
-scale = Vector2(0.0859375, 0.117188)
-
-[node name="collision" parent="slope/portal2/entrance" index="1"]
-position = Vector2(58.5, -452)
-
-[node name="exit" parent="slope/portal2" index="1"]
-position = Vector2(10, 30)
-
-[node name="Sprite2D" parent="slope/portal2/exit" index="0"]
-position = Vector2(93, 15)
-
-[node name="collision" parent="slope/portal2/exit" index="1"]
-position = Vector2(-124, -533)
-
-[node name="exit2" type="Area2D" parent="slope/portal2"]
-position = Vector2(101, -26)
-
-[node name="Sprite2D" type="Sprite2D" parent="slope/portal2/exit2"]
-modulate = Color(1, 0.32549, 0.121569, 1)
-position = Vector2(93, 15)
-scale = Vector2(0.09375, 0.125)
-texture = ExtResource("1_xc6d5")
-
-[node name="collision" type="CollisionShape2D" parent="slope/portal2/exit2"]
-position = Vector2(93, 14)
-shape = SubResource("RectangleShape2D_8krri")
-
 [node name="portal" parent="." instance=ExtResource("3_nri13")]
 position = Vector2(491, -39)
 
@@ -1576,5 +1449,9 @@ position = Vector2(203, 186)
 [node name="collision" parent="portal/exit" index="1"]
 position = Vector2(204, 184)
 
-[editable path="slope/portal2"]
+[node name="music_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_own8s")
+volume_db = -20.0
+autoplay = true
+
 [editable path="portal"]
