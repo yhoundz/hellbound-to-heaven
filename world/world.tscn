@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://c82ssjjlw1cm7"]
+[gd_scene load_steps=12 format=3 uid="uid://c82ssjjlw1cm7"]
 
 [ext_resource type="Texture2D" uid="uid://blgjwfcn1rrcp" path="res://assets/Sky2.png" id="1_aafo5"]
 [ext_resource type="PackedScene" uid="uid://cd7yfc7x0f7gl" path="res://player/player.tscn" id="2_2ox7e"]
 [ext_resource type="Texture2D" uid="uid://1f1yw20ih61o" path="res://assets/game_assets.png" id="2_er6hu"]
 [ext_resource type="PackedScene" uid="uid://b4uc20csepgo7" path="res://world/mehanics/portal.tscn" id="3_nri13"]
 [ext_resource type="AudioStream" uid="uid://rma2kotneoij" path="res://assets/audio/Levels/Heaven/511195__theojt__gates-of-heaven-music.mp3" id="5_own8s"]
+[ext_resource type="PackedScene" uid="uid://boyt3rlqevx1y" path="res://world/camera.tscn" id="6_e7o5b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qyu6i"]
 texture = ExtResource("2_er6hu")
@@ -1379,17 +1380,21 @@ size = Vector2(360, 51)
 
 [node name="World" type="Node2D"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="camera" parent="." instance=ExtResource("6_e7o5b")]
+
+[node name="TextureRect" type="TextureRect" parent="camera"]
 texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 200.0
-offset_bottom = 128.0
+offset_left = -100.0
+offset_top = -70.0
+offset_right = 100.0
+offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_aafo5")
-stretch_mode = 1
+expand_mode = 2
 
 [node name="TileMap2" type="TileMap" parent="."]
 texture_filter = 1
