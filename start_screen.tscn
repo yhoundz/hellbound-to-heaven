@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://bykuy010f6jxu"]
+
+[ext_resource type="Texture2D" uid="uid://dcpmtdd2mn6dt" path="res://Designer (1).png" id="1_hw2tx"]
+[ext_resource type="Script" path="res://start_screen.gd" id="1_l2yfq"]
+
+[sub_resource type="SystemFont" id="SystemFont_imte3"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_cd686"]
+font_names = PackedStringArray("Impact")
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l2yfq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hw2tx")
+expand_mode = 1
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 94.0
+offset_right = 68.0
+offset_bottom = 125.0
+text = "Start"
+
+[node name="EndButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 95.0
+offset_right = 180.0
+offset_bottom = 126.0
+text = "Quit"
+
+[node name="titel" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1.0
+offset_top = 10.0
+offset_right = 205.0
+offset_bottom = 38.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = SubResource("SystemFont_imte3")
+theme_override_font_sizes/font_size = 20
+text = "Hellbound to Heaven"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 30.0
+offset_top = 37.0
+offset_right = 192.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_cd686")
+theme_override_font_sizes/font_size = 11
+text = "Vengeance of the Marred Martyr"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="EndButton" to="." method="_on_end_button_pressed"]
